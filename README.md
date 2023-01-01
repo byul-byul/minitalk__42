@@ -1,6 +1,6 @@
 # minitalk_42
 
-See subj/en.subject.pdf file provided by Ecole 42.
+For full details see subj/en.subject.pdf file provided by Ecole 42.
 
 Description:
 - The purpose of this project is to code a small data exchange program using UNIX signals;
