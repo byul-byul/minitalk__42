@@ -4,9 +4,7 @@
 
 static void	signal_handler(int signal)
 {
-	if (signal == SIGUSR2)
-		printf("\nSIGUSR2 received\n");
-	else if (signal == SIGUSR1)
+	if (signal == SIGUSR1)
 		printf("\nSIGUSR1 received\n");
 	else
 		printf("\nunknown signal\n");

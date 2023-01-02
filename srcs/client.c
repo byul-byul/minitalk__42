@@ -37,24 +37,15 @@ int	ft_atoi(const char *nptr)
 
 void	client(int server_pid)
 {
-	kill(server_pid, SIGUSR1);
-	printf("\nclient: SIGUSR1 was send to pid = %d\n", server_pid);
-	sleep(5);
-	kill(server_pid, SIGUSR1);
-	printf("\nclient: SIGUSR1 was send to pid = %d\n", server_pid);
-	sleep(5);
-	kill(server_pid, SIGUSR1);
-	printf("\nclient: SIGUSR1 was send to pid = %d\n", server_pid);
-	sleep(5);
-	kill(server_pid, SIGUSR2);
-	printf("\nclient: SIGUSR2 was send to pid = %d\n", server_pid);
-	sleep(5);
-	kill(server_pid, SIGUSR2);
-	printf("\nclient: SIGUSR2 was send to pid = %d\n", server_pid);
-	sleep(5);
-	kill(server_pid, SIGUSR1);
-	printf("\nclient: SIGUSR1 was send to pid = %d\n", server_pid);
-	sleep(5);
+	int	count = 5;
+	while (count--)
+	{
+		kill(server_pid, SIGUSR1);
+		printf("\ninter_No: %d\n", count);
+		printf("client: SIGUSR1 was send to pid = %d\n", server_pid);
+		sleep(5);
+	}
+	kill(server_pid, SIGTERM);
 	printf("\nclient: done\n");
 }
 
