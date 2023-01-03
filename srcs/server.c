@@ -1,29 +1,33 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
+#include <stdlib.h>
 
 static void	signal_handler(int signal)
 {
 	if (signal == SIGUSR1)
 		printf("\nSIGUSR1 received\n");
+	else if (signal == SIGUSR2)
+		printf("\nSIGUSR2 received\n");
 	else
-		printf("\nunknown signal\n");
+		exit(0);
 }
 
-void	server(void)
+static void	server(void)
 {
-	printf("Server's PID: %d\n", getpid());
-
 	struct sigaction	sa;
+
 	sa.sa_handler = &signal_handler;
+	printf("Server's PID: %d\n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	sigaction(SIGTERM, &sa, NULL);
+	sigaction(SIGINT, &sa, NULL);
 	while (1)
-	{
-		;
-	}
+		pause();
 }
 
-int		main()
+int	main(void)
 {
 	server();
 	return (0);
