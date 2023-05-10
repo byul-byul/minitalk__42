@@ -81,3 +81,36 @@ void print_err_and_exit(int errno)
 		ft_putstr("Unknown error\n");
 	exit(0);
 }
+
+void	dec_to_binary(int num, int byte[BITS_COUNT])
+{
+	int	i;
+
+	i = -1;
+	while (++i < BITS_COUNT)
+		(byte)[i] = 0;
+	while (--i > -1)
+	{
+		(byte)[i] = num % 2;
+		num /= 2;
+	}
+}
+
+int	binary_to_dec(int byte[BITS_COUNT])
+{
+	int	i;
+	int	base;
+	int	dec;
+
+	dec = 0;
+	base = 1;
+	i = BITS_COUNT;
+	while (--i > -1)
+	{
+		// printf("i = %d, byte[%d] = %d, decP = %d\n", i, i, byte[i], dec);
+		dec += byte[i] * base;
+		base *= 2;
+		// printf("decA = %d\n\n", dec);
+	}
+	return (dec);
+}
